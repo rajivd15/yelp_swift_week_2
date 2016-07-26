@@ -8,11 +8,15 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BusinessesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+
+    @IBOutlet weak var tableView: UITableView!
 
     var businesses: [Business]!
-    @IBOutlet weak var tableView: UITableView!
+    var filteredData: [Business]!
+    var shouldShowSearchResults = false
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +26,8 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         //Set properties for cell height
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
+        createSearchBar()
+       
         
         Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
@@ -32,7 +38,7 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         })
 
-/* Example of Yelp search with more search options specified
+        /* Example of Yelp search with more search options specified
         Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
             
@@ -41,27 +47,70 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
                 print(business.address!)
             }
         }
-*/
+         */
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if businesses != nil{
-            return businesses.count
-        }else {
-            return 0
+        
+        if shouldShowSearchResults {
+            return filteredData.count
+        } else {
+            if businesses != nil{
+                return businesses.count
+            }else {
+                return 0
+            }
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell", forIndexPath: indexPath) as! BusinessCall
         
-        cell.business = businesses[indexPath.row]
+        if shouldShowSearchResults {
+            cell.business = filteredData[indexPath.row]
+        } else {
+            cell.business = businesses[indexPath.row]
+        }
         return cell
+    }
+    
+    //SearchBar Code Initials
+    func createSearchBar() {
+        //Search Bar Initialization
+        let searchBar = UISearchBar()
+        searchBar.sizeToFit()
+        searchBar.delegate = self
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = "Restaurants"
+        navigationItem.titleView = searchBar
+    }
+    
+    //Search Bar Functions
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filteredData = businesses.filter({(dataItem: Business) -> Bool in
+            // If dataItem matches the searchText, return true to include it
+            return dataItem.name!.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
+        })
+        
+        if searchText != "" {
+            shouldShowSearchResults = true
+            self.tableView.reloadData()
+        } else {
+            shouldShowSearchResults = false
+            self.tableView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        shouldShowSearchResults = true
+        searchBar.endEditing(true)
+        self.tableView.reloadData()
     }
     
     /*
@@ -73,5 +122,4 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         // Pass the selected object to the new view controller.
     }
     */
-
 }
