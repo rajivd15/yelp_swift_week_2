@@ -18,6 +18,13 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     var categories: [[String:String]]!
     
+    struct Objects {
+        var sectionName : String!
+        var sectionObjects :  [[String:String]]!
+    }
+    
+    var objectsArray = [Objects]()
+    
     var switchStates = [Int:Bool]()
     weak var delegate: FiltersViewControllerDelegate?
     
@@ -27,18 +34,29 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         categories = yelpCategories()
         tableView.dataSource = self
         tableView.delegate = self
-
-        // Do any additional setup after loading the view.
+        
+        objectsArray = [Objects(sectionName:"Categories", sectionObjects: categories)]
+        
     }
 
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return objectsArray.count
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        //return categories.count
+        return objectsArray[section].sectionObjects.count
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return objectsArray[section].sectionName
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
         
-        cell.switchLabel.text = categories[indexPath.row]["name"]
+        //cell.switchLabel.text = categories[indexPath.row]["name"]
+        cell.switchLabel.text = objectsArray[indexPath.section].sectionObjects[indexPath.row]["name"]
         cell.delegate = self
         
         cell.onSwitch.on = switchStates[indexPath.row] ?? false

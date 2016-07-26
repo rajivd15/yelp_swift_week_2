@@ -16,8 +16,8 @@ The following **required** functionality is completed:
    - [ ] The filters you should actually have are: category, sort (best match, distance, highest rated), distance, deals (on/off).
    - [ ] The filters table should be organized into sections as in the mock.
    - [ ] You can use the default UISwitch for on/off states.
-   - [ ] Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
-   - [ ] Display some of the available Yelp categories (choose any 3-4 that you want).
+   - [X] Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
+   - [X] Display some of the available Yelp categories (choose any 3-4 that you want).
 
 The following **optional** features are implemented:
 
@@ -43,7 +43,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://imgur.com/1XqRWcK.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -53,7 +53,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2016] [rajiv deshmukh]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

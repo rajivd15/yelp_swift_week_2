@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="154"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s4Y-h7-mvx" id="st0-c3-YWn">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="154"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="153.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lfl-lv-Zc3">
@@ -128,6 +128,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Yelp" id="2Nb-f4-lw2">
                         <barButtonItem key="leftBarButtonItem" title="Filters" id="icQ-R3-plL">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="G5h-wT-nTU" kind="modal" id="ejg-z9-Mp1"/>
                             </connections>
@@ -161,7 +162,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m3r-Vw-k64" id="fcp-3m-a7e">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1s-i3-WeV">
@@ -199,11 +200,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="uOp-4o-SfW">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Ecb-4y-LgY">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onCancelButton:" destination="OJy-Rb-KJI" id="FyY-JF-Oy3"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Search" id="uR5-Wa-XDQ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onSearchButton:" destination="OJy-Rb-KJI" id="1o4-21-Rq6"/>
                             </connections>
@@ -225,6 +228,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ULA-74-sJv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.122539656" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -243,6 +247,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="G4B-av-Yay">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.12253965599820604" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
